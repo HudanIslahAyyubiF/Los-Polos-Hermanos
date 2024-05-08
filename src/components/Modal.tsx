@@ -13,7 +13,7 @@ export default function Modal({
   async function update(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (data) {
-      const result = await fetch_api("/food/" + data.id, {
+      const result = await fetch_api("/coffee/" + data.id, {
         method: "PUT",
         body: new FormData(e.target as HTMLFormElement),
       }).then((res) => res.json());
@@ -23,7 +23,7 @@ export default function Modal({
         window.location.reload();
       } else alert(result.message);
     } else {
-      const result = await fetch_api("/food/", {
+      const result = await fetch_api("/coffee/", {
         method: "POST",
         body: new FormData(e.target as HTMLFormElement),
       }).then((res) => res.json());
@@ -87,18 +87,18 @@ export default function Modal({
               <div>
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="spicy_level"
+                  htmlFor="size"
                 >
-                  Spicy Level
+                  Size
                 </label>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="spicy_level"
+                  id="size"
                   type="text"
-                  placeholder="Not Spicy"
-                  name="spicy_level"
+                  placeholder="Ukuran"
+                  name="size"
                   required
-                  defaultValue={data?.spicy_level}
+                  defaultValue={data?.size}
                 />
               </div>
               <div>

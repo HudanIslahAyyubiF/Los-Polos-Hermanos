@@ -1,58 +1,101 @@
-import React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-interface TextProps {
+// Define TextProps type
+export type TextProps = {
   children?: ReactNode;
   className?: string;
+  fontFamily?: string;
+};
+
+// Export P component with Montserrat font
+export function P({
+  children,
+  className,
+  fontFamily = 'Montserrat', // Set Montserrat as the default font family
+}: TextProps) {
+  return (
+    <p
+      className={`text-neutral-500 ${className}`}
+      style={{ fontFamily: fontFamily, fontSize: 16 }} // Apply the font family and font size
+    >
+      {children}
+    </p>
+  );
 }
 
-export function H1({ children, className }: Readonly<TextProps>) {
+// Export H1 component with Montserrat font
+export function H1({ children, className }: TextProps) {
   return (
     <h1
       className={
         "text-[36px] font-bold leading-[140%] sm:text-[44px] " + className
       }
+      style={{ fontFamily: 'Montserrat' }} // Apply the Montserrat font family
     >
       {children}
     </h1>
   );
 }
 
-export function P({ children, className }: Readonly<TextProps>) {
-  return <p className={"text-neutral-500 " + className}>{children}</p>;
+// Export Pblk component with Montserrat font
+export function Pblk({ children, className }: TextProps) {
+  return (
+    <p
+      className={"text-black " + className}
+      style={{ fontFamily: 'Montserrat' }} // Apply the Montserrat font family
+    >
+      {children}
+    </p>
+  );
 }
 
-export function Pblk({ children, className }: Readonly<TextProps>) {
-  return <p className={"text-black " + className}>{children}</p>;
+// Export Li component with Montserrat font
+export function Li({ children, className }: TextProps) {
+  return (
+    <li
+      className={"text-black " + className}
+      style={{ fontFamily: 'Montserrat' }} // Apply the Montserrat font family
+    >
+      {children}
+    </li>
+  );
 }
 
-export function Li({ children, className }: Readonly<TextProps>) {
-  return <li className={"text-black " + className}>{children}</li>;
-}
-
-export function H2({ children, className }: Readonly<TextProps>) {
+// Export H2 component with Montserrat font
+export function H2({ children, className }: TextProps) {
   return (
     <h2
       className={
         "text-[24px] md:text-4xl md:leading-[120%] font-bold text-black " +
         className
       }
+      style={{ fontFamily: 'Montserrat' }} // Apply the Montserrat font family
     >
       {children}
     </h2>
   );
 }
 
-export function H3({ children, className }: Readonly<TextProps>) {
+// Export H3 component with Montserrat font
+export function H3({ children, className }: TextProps) {
   return (
-    <h3 className={"text-[28px] font-bold text-black " + className}>
+    <h3
+      className={"text-[28px] font-bold text-black " + className}
+      style={{ fontFamily: 'Montserrat' }} // Apply the Montserrat font family
+    >
       {children}
     </h3>
   );
 }
 
-export function H4({ children, className }: Readonly<TextProps>) {
+// Export H4 component with Montserrat font
+export function H4({ children, className }: TextProps) {
   return (
-    <h4 className={"text-2xl font-bold text-black " + className}>{children}</h4>
+    <h4
+      className={"text-2xl font-bold text-black " + className}
+      style={{ fontFamily: 'Montserrat' }} // Apply the Montserrat font family
+    >
+      {children}
+    </h4>
   );
 }

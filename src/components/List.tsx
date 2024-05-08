@@ -78,17 +78,17 @@ function Order({
             count
               .filter((x: any) => x.count > 0)
               .map((item: any, index: any) => {
-                const food = data.find((x: any) => x.id == item.id);
+                const menu = data.find((x: any) => x.id == item.id);
                 return (
                   <tr>
                     <td className="flex gap-6 items-center">
                       <img
-                        src={API_URL + "/uploaded/" + food.image}
+                        src={API_URL + "/uploaded/" + menu.image}
                         alt=""
                         className="w-[100px] h-[60px]"
                       />
                       <div className="flex flex-col gap-2">
-                        <P className="font-semibold">{food.name}</P>
+                        <P className="font-semibold">{menu.name}</P>
                         <div className="flex justify-end items-center gap-4">
                           <button
                             onClick={() => updateCart(item.id, "decrease")}
@@ -107,8 +107,8 @@ function Order({
                       </div>
                     </td>
 
-                    <td>{formatter.format(food.price)}</td>
-                    <td>{formatter.format(food.price * item.count)}</td>
+                    <td>{formatter.format(menu.price)}</td>
+                    <td>{formatter.format(menu.price * item.count)}</td>
                     <td>
                       <button
                         onClick={() => deleteItem(index)}

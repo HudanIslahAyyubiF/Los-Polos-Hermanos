@@ -5,11 +5,17 @@ import { getStatus } from "../utils/auth";
 
 const Transaksi = () => {
   const [data, setData] = React.useState([]);
+  const [coffee, setCoffee] = React.useState([]);
 
   const status = getStatus();
   if (!status.isLoggedIn) window.location.href ="/login";
 
   React.useEffect(() => {
+    fetch_api("/coffee")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) setCoffee(res.data);
+      });
     fetch_api("/order")
       .then((res) => res.json())
       .then((res) => {
@@ -20,32 +26,31 @@ const Transaksi = () => {
 
   return (
     <React.Fragment>
-      <Header title="Transaction History" />
+      <Header title="Riwayat Pembelian" />
       <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          {/* Replace with your content */}
           <div className="px-4 py-6 sm:px-0">
             <div className="relative overflow-x-auto">
               <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="px-6 py-3">
-                      No
+                      No.
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Date
+                      Tanggal
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Customer Name
+                      Pembeli
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Table Number
+                      Tipe Order
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Detail order
+                      Detail
                     </th>
                     <th scope="col" className="px-6 py-3 text-center">
-                      Total Price
+                      Total
                     </th>
                   </tr>
                 </thead>
@@ -59,14 +64,15 @@ const Transaksi = () => {
                         <td className="px-6 py-4">{index + 1}</td>
                         <td className="px-6 py-4">{item.order_date}</td>
                         <td className="px-6 py-4">{item.customer_name}</td>
-                        <td className="px-6 py-4">{item.table_number}</td>
+                        <td className="px-6 py-4">{item.order_type}</td>
                         <td className="px-6 py-4">
                           <ul className="list-disc">
                             {item.order_detail.map(
                               (order: any, index: number) => {
                                 return (
-                                  <li>
-                                    {order.food.name} ({order.quantity})
+                                  <li key={index}>
+                                    {(coffee?.find((x:any)=> order.coffee_id == x.id) as any)?.name} ({order.quantity
+})
                                   </li>
                                 );
                               }

@@ -4,12 +4,12 @@ import { fetch_api } from "../utils/auth";
 import Modal from "../components/Modal";
 import Card from "../components/Card";
 
-const Home = () => {
+const Order = () => {
   const [data, setData] = React.useState([]);
   const [search, setSearch] = React.useState("");
 
   function syncData() {
-    fetch_api("/food/" + search)
+    fetch_api("/coffee/?search=" + search)
       .then((res) => res.json())
       .then((res) => {
         if (res.data) setData(res.data.reverse());
@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      <Header title="Food Ordering System" />
+      <Header title="Order" />
       <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           {/* Replace with your content */}
@@ -51,4 +51,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Order;

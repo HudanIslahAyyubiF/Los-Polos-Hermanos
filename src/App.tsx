@@ -3,13 +3,12 @@ import { Switch, Route } from "react-router-dom";
 
 import { getStatus } from "./utils/auth";
 import Navbar from "./components/Navbar";
-import { Redirect } from "react-router-dom";
 
 import NotFound from "./views/NotFound";
 import Transaksi from "./views/Transaksi";
 import Login from "./views/Login";
-import Order from "./views/Order";
-import Food from "./views/Food";
+import Order from "./views/Order"
+import Menu from "./views/Menu";
 import Cart from "./views/Cart";
 
 const App = () => {
@@ -20,20 +19,11 @@ const App = () => {
       <>
         <Navbar isLoggedIn />
         <Switch>
-          <Route exact path="/food">
-            <Food />
+          <Route exact path="/Menu">
+            <Menu />
           </Route>
-          <Route exact path="/transaksi">
+          <Route path="/transaksi">
             <Transaksi />
-          </Route>
-          <Route exact path="/login">
-            <Redirect to="/food" />
-          </Route>
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
-          <Route exact path="/">
-            <Order />
           </Route>
           <Route>
             <NotFound />
@@ -46,19 +36,13 @@ const App = () => {
       <>
         <Navbar />
         <Switch>
-          <Route exact path="/food">
-            <Redirect to="/login" />
-          </Route>
-          <Route exact path="/transaksi">
-            <Redirect to="/login" />
-          </Route>
           <Route exact path="/login">
             <Login />
           </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
-          <Route exact path="/">
+          <Route path="/">
             <Order />
           </Route>
           <Route>

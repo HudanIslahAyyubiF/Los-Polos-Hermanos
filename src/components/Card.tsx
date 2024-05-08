@@ -59,12 +59,12 @@ function Card({ data }: { data: any }) {
                 <a href="#">
                     <H4>{data.name}</H4>
                 </a>
-                <P>{data.spicy_level}</P>
+                <P>{data.size}</P>
                 <P>{formatter.format(data.price)}</P>
-                <div className="flex justify-end items-center gap-4">
-                    <button onClick={() => updateCart(data.id, "decrease")} className="w-8 h-8 font-semibold rounded-full bg-red-500 hover:bg-red-400">-</button>
-                    {count}
-                    <button onClick={() => updateCart(data.id, "increase")} className="w-8 h-8 font-semibold rounded-full bg-green-600 hover:bg-green-500">+</button>
+            <div className="flex justify-end items-center gap-4">
+                <button onClick={() => updateCart(data.id, "increase")} className="w-8 h-8 font-semibold rounded bg-green-500 hover:bg-green-600">+</button>
+                {count}
+                <button onClick={() => updateCart(data.id, "decrease")} className="w-8 h-8 font-semibold rounded bg-red-400 hover:bg-red-500">-</button>
                 </div>
             </div>
         </div>

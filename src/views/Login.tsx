@@ -4,7 +4,7 @@ import { login } from "../utils/auth";
 
 const Login = () => {
   const status = getStatus();
-  if (status.isLoggedIn) window.location.href = "/food";
+  if (status.isLoggedIn) window.location.href = "/menu";
   const [form, setForm] = React.useState({
     email: "",
     password: "",
@@ -20,7 +20,7 @@ const Login = () => {
 
     if (req.status) {
       alert("Success");
-      window.location.href = "/food";
+      window.location.href = "/menu";
     } else alert(req.message);
   };
 
